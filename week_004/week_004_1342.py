@@ -2,12 +2,9 @@ arr = input()
 n = len(arr)
 base = [0] * n
 visited = [False] * n
-pre = ""
 result_arr = []
 
-def recur(cur):
-    global pre
-
+def recur(cur, pre):
     if cur == n:
         temp = ""
         for i in range(n):
@@ -29,9 +26,8 @@ def recur(cur):
 
             visited[i] = True
             base[cur] = i
-            pre = arr[i]
-            recur(cur+1)
+            recur(cur+1, arr[i])
             visited[i] = False
 
-recur(0)
+recur(0, -1)
 print(len(result_arr))
